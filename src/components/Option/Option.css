@@ -1,0 +1,49 @@
+.option-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  background: #ffffff;
+  border: 1px solid #ffffff;
+  border-radius: 8px;
+  padding: 12px 24px 12px 16px;
+  width: 128px;
+  height: 44px;
+  align-items: center;
+  cursor: pointer;
+}
+
+.option-text {
+  /* width: 64px; */
+  height: 20px;
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  display: flex;
+  align-items: flex-end;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #121010;
+}
+
+.outer-elipse-option {
+  box-sizing: border-box;
+  width: 16px;
+  height: 16px;
+  border: 1px solid #121010;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.inner-elipse-option {
+  box-sizing: border-box;
+  border-radius: 50%;
+  width: 12px;
+  height: 12px;
+  background: #121010;
+  border: 1px solid #121010;
+}

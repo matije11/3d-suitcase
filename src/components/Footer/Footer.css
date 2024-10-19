@@ -1,0 +1,24 @@
+.footer-container {
+  position: absolute;
+  width: 606px;
+  height: 44px;
+  left: calc(50% - 606px / 2);
+  top: 600px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  gap: 8px;
+}
+
+@media only screen and (max-width: 600px) {
+  .footer-container {
+    display: grid;
+    grid-template-columns: repeat(2, 0fr);
+    height: 44px;
+    left: calc(50% - 606px / 2);
+    top: 600px;
+    gap: 8px;
+    position: unset;
+    width: unset;
+  }
+}
