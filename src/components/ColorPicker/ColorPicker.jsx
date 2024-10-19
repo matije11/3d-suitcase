@@ -28,10 +28,6 @@ const ColorPicker = () => {
       </div>
       <Colors />
       {active === responsiveCta.body && <Image />}
-      <div className="cp-image-option">
-        <div className="image"></div>
-        <div className="no-image"></div>
-      </div>
       <div className="cp-footer">
         <div onClick={handlePrevious}>
           <img src={previous} alt="Previous" />

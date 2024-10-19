@@ -196,6 +196,7 @@
   }
   .colors-container {
     display: flex;
+    gap: 16px;
   }
   .cp-footer {
     display: flex;
@@ -204,8 +205,8 @@
     padding: 10px 20px;
     margin-top: auto;
     cursor: pointer;
-    position: fixed;
-    top: 720px;
+    position: absolute;
     width: -webkit-fill-available;
+    top: calc(100% - 150px);
   }
 }

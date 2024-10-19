@@ -16,7 +16,6 @@ const options = {
   containerID: "container3d_replace",
 
   onPointerClick: function (objectsClick) {
-    console.log(objectsClick);
     if (objectsClick.length > 0) {
       if (objectsClick[0].type == "annotation") {
         activateAnnotation(objectsClick[0].name);
@@ -38,10 +37,6 @@ const Suitcase = () => {
         "Retract handle",
         "Wheel spinner off",
       ]);
-
-      window.Unlimited3D.getAvailableAnnotations(function (error, result) {
-        console.log(result);
-      });
 
       hideAnnotations();
     });

@@ -13,6 +13,7 @@ const default_mobile = "default_camera_mobile";
 const useResponsiveCta = () => {
   const isMobile = useIsMobile();
 
+  // Dynamically return an object where values depend on screen size
   const responsiveCta = Object.keys(cta).reduce((acc, key) => {
     acc[key] = !isMobile ? cta[key].desktop : cta[key].mobile;
     return acc;
