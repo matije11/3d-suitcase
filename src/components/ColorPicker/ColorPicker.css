@@ -146,8 +146,7 @@
 .cp-container-mobile {
   position: absolute;
   width: 100vw;
-  height: -webkit-fill-available;
-  left: 0px;
+  height: 347px;
   top: 465px;
   background: #ffffff;
   border-radius: 8px 8px 0px 0px;
@@ -207,6 +206,6 @@
     cursor: pointer;
     position: absolute;
     width: -webkit-fill-available;
-    top: calc(100% - 150px);
+    top: calc(100% - 100px);
   }
 }
