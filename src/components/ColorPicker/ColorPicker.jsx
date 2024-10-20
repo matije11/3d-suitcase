@@ -15,13 +15,17 @@ const ColorPicker = () => {
   const { active, handleCloseColorPicker, handleNext, handlePrevious } =
     useContext(CTAContext);
 
+  const categoryTitles = {
+    [responsiveCta.body]: "BODY COLOR",
+    [responsiveCta.handle]: "HANDLES",
+    [responsiveCta.corners]: "CORNERS",
+    [responsiveCta.wheels]: "WHEELS",
+  };
+
   return (
     <div className={!isMobile ? "cp-container" : "cp-container-mobile"}>
       <div className="cp-header cp-title">
-        {active === responsiveCta.body && <p>BODY COLOR</p>}
-        {active === responsiveCta.handle && <p>HANDLES</p>}
-        {active === responsiveCta.corners && <p>CORNERS</p>}
-        {active === responsiveCta.wheels && <p>WHEELS</p>}
+        <p>{categoryTitles[active]}</p>
         <div style={{ cursor: "pointer" }} onClick={handleCloseColorPicker}>
           <img src={close} alt="Close" />
         </div>

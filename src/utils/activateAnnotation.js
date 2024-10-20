@@ -1,73 +1,43 @@
+// Map of annotation names to corresponding modifiers
+const annotationMap = {
+  Open: {
+    modifier: "open",
+    show: ["Close"],
+  },
+  Close: {
+    modifier: "close",
+    show: ["Open", "Extend handle", "Wheel spinner on"],
+  },
+  "Extend handle": { modifier: "extend_handle", show: ["Retract handle"] },
+  "Retract handle": {
+    modifier: "retract_handle",
+    show: ["Open", "Extend handle", "Wheel spinner on"],
+  },
+  "Wheel spinner on": {
+    modifier: "wheel_spinner_on",
+    show: ["Wheel spinner off"],
+  },
+  "Wheel spinner off": {
+    modifier: "wheel_spinner_off",
+    show: ["Open", "Extend handle", "Wheel spinner on"],
+  },
+};
+
 export function activateAnnotation(value) {
-  console.log(value);
+  const annotation = annotationMap[value];
 
-  switch (value) {
-    case "Open":
-      window.Unlimited3D.activateModifier({
-        modifier: "open",
-      });
-      window.Unlimited3D.hideAnnotations({
-        annotations: ["Open", "Extend handle", "Wheel spinner on"],
-      });
-      window.Unlimited3D.showAnnotations({
-        annotationObjects: [
-          {
-            annotations: ["Close"],
-          },
-        ],
-      });
-      window.Unlimited3D.setSelectable(["Close"]);
-      break;
-
-    case "Close":
-      window.Unlimited3D.activateModifier({
-        modifier: "close",
-      });
-      window.Unlimited3D.hideAnnotations({
-        annotations: ["Close", "Extend handle", "Wheel spinner on"],
-      });
-      window.Unlimited3D.showAnnotations({
-        annotationObjects: [
-          {
-            annotations: ["Open", "Extend handle", "Wheel spinner on"],
-          },
-        ],
-      });
-      break;
-
-    case "Extend handle":
-      window.Unlimited3D.activateModifier({
-        modifier: "extend_handle",
-      });
-      window.Unlimited3D.hideAnnotations({
-        annotations: ["Open", "Extend handle", "Wheel spinner on"],
-      });
-      window.Unlimited3D.showAnnotations({
-        annotationObjects: [
-          {
-            annotations: ["retract_handle"],
-          },
-        ],
-      });
-      window.Unlimited3D.setSelectable(["retract_handle"]);
-      break;
-    case "Wheel spinner on":
-      window.Unlimited3D.activateModifier({
-        modifier: "wheel_spinner_on",
-      });
-      window.Unlimited3D.hideAnnotations({
-        annotations: ["Open", "Extend handle", "Wheel spinner on"],
-      });
-      window.Unlimited3D.showAnnotations({
-        annotationObjects: [
-          {
-            annotations: ["Wheel spinner off"],
-          },
-        ],
-      });
-      window.Unlimited3D.setSelectable(["Wheel spinner off"]);
-      break;
-    default:
-      break;
+  // calling activeateModifier function for specific annotation
+  // with callback function do show corresponding annotation and hide others
+  if (annotation) {
+    window.Unlimited3D.activateModifier(
+      {
+        modifier: annotation.modifier,
+      },
+      () => {
+        window.Unlimited3D.showOnlyAnnotations({
+          annotationObjects: [{ annotations: annotation.show }],
+        });
+      }
+    );
   }
 }

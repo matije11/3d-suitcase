@@ -32,12 +32,6 @@ const Suitcase = () => {
       }
       window.loadingContent.style.display = "none";
 
-      window.Unlimited3D.setSelectable([
-        "Close",
-        "Retract handle",
-        "Wheel spinner off",
-      ]);
-
       hideAnnotations();
     });
   }, []);

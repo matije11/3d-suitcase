@@ -4,8 +4,8 @@ import useIsMobile from "../../hooks/useIsMobile";
 import ColorsMap from "./ColorsMap";
 import arrowLeftMobile from "../../assets/arrow-left-mobile.svg";
 import arrowRightMobile from "../../assets/arrow-right-mobile.svg";
-import "../ColorPicker/ColorPicker.css";
 import useResponsiveCta from "../../hooks/useResponsiveCta";
+import "./Colors.css";
 
 const Colors = () => {
   const scrollContainerRef = useRef(null);
@@ -13,28 +13,33 @@ const Colors = () => {
   const { responsiveCta } = useResponsiveCta();
   const { active, activeColors } = useContext(CTAContext);
 
-  const scrollLeft = () => {
+  const handleScroll = (direction) => {
     if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollLeft -= 150;
+      scrollContainerRef.current.scrollLeft +=
+        direction === "left" ? -150 : 150;
     }
   };
 
-  const scrollRight = () => {
-    if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollLeft += 150;
+  const getActiveColor = () => {
+    switch (active) {
+      case responsiveCta.body:
+        return activeColors.body;
+      case responsiveCta.handle:
+        return activeColors.handle;
+      case responsiveCta.corners:
+        return activeColors.corners;
+      case responsiveCta.wheels:
+        return activeColors.wheels;
+      default:
+        return "";
     }
   };
 
   return (
     <>
-      <div className="cp-subtitle-container cp-subtitle-text">
+      <div className="cp-subtitle-container">
         <p>Select Color</p>
-        <p style={{ textTransform: "uppercase" }}>
-          {active === responsiveCta.body && activeColors.body}
-          {active === responsiveCta.handle && activeColors.handle}
-          {active === responsiveCta.corners && activeColors.corners}
-          {active === responsiveCta.wheels && activeColors.wheels}
-        </p>
+        <p style={{ textTransform: "uppercase" }}>{getActiveColor()}</p>
       </div>
       {!isMobile ? (
         <ColorsMap />
@@ -44,7 +49,7 @@ const Colors = () => {
             src={arrowLeftMobile}
             alt="Arrow left mobile"
             style={{ marginLeft: "8px" }}
-            onClick={() => scrollLeft()}
+            onClick={() => handleScroll("left")}
           />
           <div className="scroll-container" ref={scrollContainerRef}>
             <ColorsMap />
@@ -53,7 +58,7 @@ const Colors = () => {
             src={arrowRightMobile}
             alt="Arrow right mobile"
             style={{ marginRight: "8px" }}
-            onClick={() => scrollRight()}
+            onClick={() => handleScroll("right")}
           />
         </div>
       )}
