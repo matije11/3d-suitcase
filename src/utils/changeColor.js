@@ -1,9 +1,9 @@
-export function changeColor(parts, materialOne) {
+export function changeColor(parts, material) {
   window.Unlimited3D.changeMaterials({
     partObjects: [
       {
         parts: parts,
-        material: materialOne,
+        material: material,
       },
     ],
   });
